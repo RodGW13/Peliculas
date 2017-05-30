@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html" />
+	<meta name="author" content="www.intercambiosvirtuales.org" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen"/>
+    <link href="css/general.css" rel="stylesheet" media="screen"/>
+	<title>Formulario Modificar</title>
+</head>
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/validaciones.js"></script>
+<body style="background-color: black;">
+<script>
+   $(document).ready(function(){
+    $("#btnActualizar").click(function(event){
+        $.post
+        (
+            "Modificar.php",{
+                codigo_pel: document.getElementById("txtCodigo_pel").value,
+                titulo: document.getElementById("txtTitulo").value,
+                categoria: document.getElementById("txtCategoria").value,
+                precio: document.getElementById("txtPrecio").value,
+                asientos: document.getElementById("txtAsientos").value
+            },function(data, status){
+                document.getElementById("respuesta").innerHTML=data;
+            }
+        );
+    });
+    });
+    </script>
+    
+    <form border="1">
+    <h1>Ingrese los datos para actualizar las peliculas</h1>
+    
+    <table>
+        <tr>
+            <td>Codigo_pelicula:</td><td><input type="text" name= "txtCodigo_pel" id="txtCodigo_pel" onblur="Validar(this)"/></td>
+        </tr>
+        <tr>
+            <td>Titulo:</td><td><input type="text" name= "txtTitulo" id="txtTitulo" onblur="Validar(this)"/></td>
+        </tr> 
+        <tr>
+            <td>Categoria</td><td><input type="text" name= "txtCategoria" id="txtCategoria" onblur="Validar(this)"/></td>
+        </tr>
+        <tr>
+            <td>Precio</td><td><input type="text" name= "txtPrecio" id="txtPrecio" onblur="Validar(this)"/></td>
+        </tr> 
+        <tr>
+            <td>Asientos</td><td><input type="text" name= "txtAsientos" id="txtAsientos" onblur="Validar(this)"/></td>
+        </tr> 
+        <tr>
+            <td><input type="reset" value="Limpiar"/> </td>
+            <td><input type="button" value="Actualizar" id="btnActualizar"/> </td>
+
+        </tr>                       
+    </table>
+    </form>
+<div id="respuesta" ></div>
+
+<img src="images/foto8.jpg" width="400" height="350"/>
+</body>
+</html>

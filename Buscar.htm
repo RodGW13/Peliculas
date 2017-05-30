@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html" />
+	<meta name="author" content="www.intercambiosvirtuales.org" />
+
+	<title>Buscar pelicula</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+</head>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<body style="background: darkgray;">
+  
+   <nav class="navbar navbar-inverse" role="navigation">
+            <div class="navbar-header">
+                <li><a class="navbar-brand"><h1>Buscar</h1></a></li>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="background: black;">
+                
+            
+            <ul class="nav navbar-nav">
+                
+                <li><a href="formularioGeneral.htm"><h2>Volver</h2></a></li>
+            </ul>
+          </div>
+        </nav>
+        
+     <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+<script>
+   $(document).ready(function(){
+    
+ 
+    
+    $("#btn_buscar").click(function(event){
+        $.post("Buscar.php",{
+            codigo_pel: document.getElementById("txtCodigo_pel").value
+        },function(data, status){
+            document.getElementById("respuesta").innerHTML=data;
+        });
+    });
+    
+    $("#btnBuscar").click(function(event){
+        $("#formulario").slideToggle();
+    });
+   });
+</script>
+<form>
+    <table>
+    <h2>Buscar pelicula por codigo</h2>
+        <tr>
+            <td>Codigo pelicula:</td><td><input type="text" name= "txtCodigo_pel" id="txtCodigo_pel" onblur="Validar(this)"/></td>
+        </tr>
+        <tr>
+            
+            
+            <td><input type="button" value="Ingresar" id="btnBuscar"/> </td>
+        </tr>                       
+    </table>
+</form>
+<div id="respuesta" ></div>
+<div id="formulario" style="background-color: darkgray;height:80px;width: 500px;display: none;">
+        <h4>Ingrese Codigo pelicula:<input type="text" name="txtBID" id="txtBID" /></h4>
+        <input type="button" value="Buscar" id="btn_buscar"/>
+</div>
+<tr>
+<td><marquee><p><img src="images/bus.jpg" style="background-color: #000000; text-align: left; width:500px;height:300px;  direction=right"/></p></marquee></td>
+</tr>
+</body>
+</html>

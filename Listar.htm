@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html" />
+	<meta name="author" content="www.intercambiosvirtuales.org" />
+
+	<title>Listar Peliculas</title>
+     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+</head>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<body style="background: darkgray;">
+  
+   <nav class="navbar navbar-inverse" role="navigation">
+            <div class="navbar-header">
+                <li><a class="navbar-brand"><h1>Listar Peliculas</h1></a></li>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="background: black;">
+                
+            
+            <ul class="nav navbar-nav">
+                
+                <li><a href="formularioGeneral.htm"><h2>Volver</h2></a></li>
+            </ul>
+          </div>
+        </nav>
+        
+     <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    
+<script>
+ $(document).ready(function(){
+ $("#btnListar").click(function(event){
+        $.post("Listar.php",
+        {}, function(data, status){
+           document.getElementById("respuesta").innerHTML=data; 
+        });
+    });
+    });
+</script>
+<form>
+    <table align="center">
+    <h2>Listar todas las peliculas existentes</h2>
+    
+        <tr>
+             <td><p ><img src="images/col.jpg" style="background-color: #000000; text-align: left; width:500px;height:300px;"/></p></td>
+        </tr>
+        <tr>
+
+            <td><input type="button" value="Listar" id="btnListar"/> </td>
+        </tr> 
+        
+        
+        
+        </table>
+    </form>
+    <div id="respuesta" ></div>
+   
+    
+</body>
+</html>
